@@ -14,13 +14,13 @@
 							%br
 
 							= label_tag :model, nil
-							= text_field_tag :model, nil
+							= text_field_tag :model, params[:model]
 							%br
 							= label_tag :mileage, nil
-							= text_field_tag :mileage
+							= text_field_tag :mileage, params[:mileage]
 							%br
 							= label_tag :nickname, nil
-							= text_field_tag :nil
+							= text_field_tag :nickname, params[:nickname]
 							.small-6.small-centered.columns.end
 								= submit_tag "ADD CAR", class: "button expand success"
 %nav.top-bar{"data-topbar" => ""}
