@@ -1,0 +1,61 @@
+.overlay
+	.row
+		.small-11.medium-9.large-6.small-centered.columns
+			.modal
+				= form_tag business_cars_path do
+					.row
+						.small-11.columns
+						.small-1.columns
+							%a.close-reveal-modal ×
+					.row
+						.small-9.small-centered.columns
+							= label_tag :email, nil
+							= text_field_tag :email, params[:email]
+							%br
+
+							= label_tag :password, nil
+							= password_field_tag :password, nil
+							%br
+							= submit_tag "Login"
+%nav.top-bar{"data-topbar" => ""}
+	%ul.title-area
+		%li.name
+			%h1
+				%a Business Car App
+.jaguar-top-banner
+	= image_tag('jaguar_top_banner.jpg')
+.first-point-banner
+	.small-11.medium-9.large-7.small-centered.columns
+		%h1 In a world of constant travel
+		%h1 Meetings half way across the city
+		%h1 It's nice to keep track of the corporate car
+.second-point-banner
+	.row
+		-@cars.each do |c|
+			.small-6.columns
+				.car-box
+					.small-6.columns
+						%h2= c.nickname
+					.small-6.columns
+						%button.button
+							Update
+					.small-6.columns
+						%h3 Make
+						%h4= c.make
+					.small-6.columns
+						%h3 Model
+						%h4= c.model
+					%h3 Mileage
+					%h4= c.mileage
+.add-banner
+	.row
+		.small-6.small-centered.columns
+			.add-button
+				%button.button.expand.success.add
+					Add a Car
+
+.neon-lights-banner
+	= image_tag ('neon_lights_banner.jpg')
+						
+						
+
