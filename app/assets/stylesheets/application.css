@@ -25,6 +25,9 @@
 
 	text-align: center;
 }
+.line-break {
+    border-bottom: 1px rgb(239, 239, 239) solid;
+}
 .second-point-banner{
 	border-top: 1px darkgrey solid;
 	background-image: url("white_carbon.png");
@@ -70,10 +73,10 @@
 	border-bottom: 1px darkgrey solid;
 }
 .add-banner {
-	height: 4em;
+	height: 6em;
 }
 .add-button{
-	margin-top: 7px;
+	margin-top: 1.25rem;
 }
 .neon-lights-banner {
 

@@ -2,7 +2,7 @@
 	.row
 		.small-11.medium-9.large-6.small-centered.columns
 			.modal
-				= form_tag business_cars_path do
+				= form_for BusinessCar.new do |f|
 					.row
 						.small-11.columns
 						.small-1.columns
@@ -10,19 +10,19 @@
 					.row
 						.small-9.small-centered.columns
 							= label_tag :make, nil
-							= text_field_tag :make, params[:make]
+							= f.text_field :make
 							%br
 
 							= label_tag :model, nil
-							= text_field_tag :model, nil
+							= f.text_field :model
 							%br
 							= label_tag :mileage, nil
-							= text_field_tag :mileage
+							= f.text_field :mileage
 							%br
 							= label_tag :nickname, nil
-							= text_field_tag :nil
+							= f.text_field :nickname
 							.small-6.small-centered.columns.end
-								= submit_tag "ADD CAR", class: "button expand success"
+								= f.submit "ADD CAR", class: "button expand success"
 %nav.top-bar{"data-topbar" => ""}
 	%ul.title-area
 		%li.name
@@ -32,8 +32,11 @@
 	= image_tag('jaguar_top_banner.jpg')
 .first-point-banner
 	.small-11.medium-9.large-7.small-centered.columns
-		%h1 In a world of constant travel
-		%h1 Meetings half way across the city
+		.line-break
+			%h1 In a world of constant travel
+		.line-break	
+			%h1 Meetings half way across the city
+		
 		%h1 It's nice to keep track of the corporate car
 .second-point-banner
 	.row
@@ -46,13 +49,13 @@
 						%button.button.expand
 							Update
 					.small-6.columns
-						%h3 Make
+						%h5 Make
 						%h4= c.make
 					.small-6.columns
-						%h3 Model
+						%h5 Model
 						%h4= c.model
 					.small-6.columns	
-						%h3 Mileage
+						%h5 Mileage
 						%h4= c.mileage
 					.small-6.columns	
 						%button.button.alert.expand
