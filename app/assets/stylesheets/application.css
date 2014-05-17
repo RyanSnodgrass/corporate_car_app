@@ -25,6 +25,9 @@
 
 	text-align: center;
 }
+.line-break {
+    border-bottom: 1px rgb(239, 239, 239) solid;
+}
 .second-point-banner{
 	border-top: 1px darkgrey solid;
 	background-image: url("white_carbon.png");
