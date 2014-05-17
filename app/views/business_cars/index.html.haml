@@ -9,14 +9,20 @@
 							%a.close-reveal-modal ×
 					.row
 						.small-9.small-centered.columns
-							= label_tag :email, nil
-							= text_field_tag :email, params[:email]
+							= label_tag :make, nil
+							= text_field_tag :make, params[:make]
 							%br
 
-							= label_tag :password, nil
-							= password_field_tag :password, nil
+							= label_tag :model, nil
+							= text_field_tag :model, nil
 							%br
-							= submit_tag "Login"
+							= label_tag :mileage, nil
+							= text_field_tag :mileage
+							%br
+							= label_tag :nickname, nil
+							= text_field_tag :nil
+							.small-6.small-centered.columns.end
+								= submit_tag "ADD CAR", class: "button expand success"
 %nav.top-bar{"data-topbar" => ""}
 	%ul.title-area
 		%li.name
@@ -37,7 +43,7 @@
 					.small-6.columns
 						%h2= c.nickname
 					.small-6.columns
-						%button.button
+						%button.button.expand
 							Update
 					.small-6.columns
 						%h3 Make
@@ -45,11 +51,16 @@
 					.small-6.columns
 						%h3 Model
 						%h4= c.model
-					%h3 Mileage
-					%h4= c.mileage
+					.small-6.columns	
+						%h3 Mileage
+						%h4= c.mileage
+					.small-6.columns	
+						%button.button.alert.expand
+							Delete
+
 .add-banner
 	.row
-		.small-6.small-centered.columns
+		.small-4.small-centered.columns
 			.add-button
 				%button.button.expand.success.add
 					Add a Car
