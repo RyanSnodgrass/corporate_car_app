@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: business_car_app_development
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: business_car_app_test
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: business_car_app
+  pool: 5
