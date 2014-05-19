@@ -23,7 +23,7 @@ $( function () {
 				if(data == "1") {
 					console.log(data);
 					console.log('this succeeded');
-					// $('.car-box').append(data);
+					$(box).hide('slow');
 				}
 				else {
 					console.log(data);
@@ -35,16 +35,18 @@ $( function () {
 
 	});
 
-	$('form').submit(function () {
+	$('form').on('submit', function (){
 		var valuesToSubmit = $(this).serialize();
-		
+		console.log('before ajax');
 		$.ajax({
-			url: "/business_cars/",
-			
+			url: $(this).attr('action'),
+			datatype: "JSON",
 			data: valuesToSubmit,
-			type: "POST",
-			success: function(data){
+			type: "POST"
+		}).success(function(data){
+
 				console.log('before if statement');
+
 				if(data === "0") {
 					
 					console.log(data);
@@ -53,15 +55,14 @@ $( function () {
 				else {
 					console.log("inside if statement");
 					console.log(data);
-					location.reload(true);
+					// $(data).appendTo('itemlist');
 					// $('ul').append(data);
 					modal.fadeOut();
 
 				
 					
 				}
-			}
+			});
 		});	
-		return false;
+		// return false;
 	});
-});

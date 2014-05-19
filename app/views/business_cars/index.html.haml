@@ -24,7 +24,7 @@
 							= label_tag :nickname, nil
 							= f.text_field :nickname
 							.small-6.small-centered.columns.end
-								= f.submit "ADD CAR", class: "button success expand"
+								= submit_tag "ADD CAR", class: "button success expand"
 %nav.top-bar{"data-topbar" => ""}
 	%ul.title-area
 		%li.name
@@ -42,27 +42,29 @@
 		%h1 It's nice to keep track of the corporate car
 .second-point-banner
 	.row
-		-@cars.each do |c|
-			.car-div
-				.small-6.columns
-					.car-box
+		%ul#itemlist
+			-@cars.each do |c|
+				%li
+					.car-div
 						.small-6.columns
-							%h2= c.nickname
-						.small-6.columns
-							%button.button.expand
-								Update
-						.small-6.columns
-							%h5 Make
-							%h4= c.make
-						.small-6.columns
-							%h5 Model
-							%h4= c.model
-						.small-6.columns	
-							%h5 Mileage
-							%h4= c.mileage
-						.small-6.columns	
-							%button.button.alert.expand.delete{ data: { "businesscar-id" => c.id}}
-								Delete
+							.car-box
+								.small-6.columns
+									%h2= c.nickname
+								.small-6.columns
+									%button.button.expand
+										Update
+								.small-6.columns
+									%h5 Make
+									%h4= c.make
+								.small-6.columns
+									%h5 Model
+									%h4= c.model
+								.small-6.columns	
+									%h5 Mileage
+									%h4= c.mileage
+								.small-6.columns	
+									%button.button.alert.expand.delete{ data: { "businesscar-id" => c.id}}
+										Delete
 
 .add-banner
 	.row
