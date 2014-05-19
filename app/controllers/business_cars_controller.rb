@@ -1,22 +1,22 @@
 class BusinessCarsController < ApplicationController
-	respond_to :js, :json
+	# respond_to :json
 
 	def index
 		@cars = BusinessCar.all
 	end
 	def create
-		@new_car = BusinessCar.new
-		if @new_car = BusinessCar.create(car_params)
-			respond_to do |format|
-				
-				format.js { render json: @new_car}
-				format.html { redirect_to business_cars_path}
-				
-			end
+		 @new_car = BusinessCar.new(car_params)
+		if @new_car.save
+			render json: @new_car
+			# respond_to  do |format|	
+			# 	format.js {render json: @new_car}
+			# 	format.html {redirect_to business_cars_path}
+			# end
 		else
 			respond_to do |format|
 				
 				format.js { render plain: "0"}
+
 				
 			end
 		end
@@ -30,11 +30,11 @@ class BusinessCarsController < ApplicationController
 				format.html {redirect_to business_cars_path}
 			end
 		else
-			# render plain: "0"
-			# respond_to do |format|
-			# 	format.js { render plain: "0"}
-			# 	format.html { redirect_to business_cars_path, notice: "delete failed"}
-			# end
+			render plain: "0"
+			respond_to do |format|
+				format.js { render plain: "0"}
+				format.html { redirect_to business_cars_path, notice: "delete failed"}
+			end
 		end
 
 	end
