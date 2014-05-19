@@ -2,7 +2,9 @@
 	.row
 		.small-11.medium-9.large-6.small-centered.columns
 			.modal
+			
 				= form_for BusinessCar.new do |f|
+
 					.row
 						.small-11.columns
 						.small-1.columns
@@ -22,7 +24,7 @@
 							= label_tag :nickname, nil
 							= f.text_field :nickname
 							.small-6.small-centered.columns.end
-								= f.submit "ADD CAR", class: "button expand success"
+								= f.submit "ADD CAR", class: "button success expand"
 %nav.top-bar{"data-topbar" => ""}
 	%ul.title-area
 		%li.name
@@ -41,25 +43,26 @@
 .second-point-banner
 	.row
 		-@cars.each do |c|
-			.small-6.columns
-				.car-box
-					.small-6.columns
-						%h2= c.nickname
-					.small-6.columns
-						%button.button.expand
-							Update
-					.small-6.columns
-						%h5 Make
-						%h4= c.make
-					.small-6.columns
-						%h5 Model
-						%h4= c.model
-					.small-6.columns	
-						%h5 Mileage
-						%h4= c.mileage
-					.small-6.columns	
-						%button.button.alert.expand
-							Delete
+			.car-div
+				.small-6.columns
+					.car-box
+						.small-6.columns
+							%h2= c.nickname
+						.small-6.columns
+							%button.button.expand
+								Update
+						.small-6.columns
+							%h5 Make
+							%h4= c.make
+						.small-6.columns
+							%h5 Model
+							%h4= c.model
+						.small-6.columns	
+							%h5 Mileage
+							%h4= c.mileage
+						.small-6.columns	
+							%button.button.alert.expand.delete{ data: { "businesscar-id" => c.id}}
+								Delete
 
 .add-banner
 	.row
