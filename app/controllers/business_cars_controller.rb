@@ -24,11 +24,11 @@ class BusinessCarsController < ApplicationController
 	def destroy
 		@car = BusinessCar.find(params[:id])
 		if @car.destroy
-			render plain: "1"
-			# respond_to  do |format|	
-			# 	format.js {render plain: "1"}
-			# 	redirect_to business_cars_path
-			# end
+			# render plain: "1"
+			respond_to  do |format|	
+				format.js {render plain: "1"}
+				format.html {redirect_to business_cars_path}
+			end
 		else
 			# render plain: "0"
 			# respond_to do |format|

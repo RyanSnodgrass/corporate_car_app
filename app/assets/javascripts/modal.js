@@ -23,7 +23,7 @@ $( function () {
 				if(data == "1") {
 					console.log(data);
 					console.log('this succeeded');
-					$(box).hide('slow');
+					$(box).fadeOut('slow');
 				}
 				else {
 					console.log(data);
