@@ -1,18 +1,18 @@
 class BusinessCarsController < ApplicationController
-	respond_to :json
+	respond_to :js, :json
 
 	def index
 		@cars = BusinessCar.all
 	end
 	def create
+		@new_car = BusinessCar.new
 		if @new_car = BusinessCar.create(car_params)
-			# respond_to do |format|
-				# flash[:notice]= "Corporate Car was created!"
-				# render json: @new_car
-				 render json: @new_car
-				# format.html { redirect_to(@new_car)}
+			respond_to do |format|
 				
-			# end
+				format.js { render json: @new_car}
+				format.html { redirect_to business_cars_path}
+				
+			end
 		else
 			respond_to do |format|
 				
@@ -25,15 +25,17 @@ class BusinessCarsController < ApplicationController
 		@car = BusinessCar.find(params[:id])
 		if @car.destroy
 			render plain: "1"
-			# respond_to |format|
+			# respond_to  do |format|	
 			# 	format.js {render plain: "1"}
-			redirect_to business_cars_path
-			end
+			# 	redirect_to business_cars_path
+			# end
 		else
-			respond_to do |format|
-				format.js { render plain: "0"}
-				format.html { redirect_to business_cars_path, notice: "delete failed"}
-			end
+			# render plain: "0"
+			# respond_to do |format|
+			# 	format.js { render plain: "0"}
+			# 	format.html { redirect_to business_cars_path, notice: "delete failed"}
+			# end
+		end
 
 	end
 	def  car_params
