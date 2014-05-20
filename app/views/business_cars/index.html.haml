@@ -2,9 +2,7 @@
 	.row
 		.small-11.medium-9.large-6.small-centered.columns
 			.modal
-			
 				= form_for BusinessCar.new do |f|
-
 					.row
 						.small-11.columns
 						.small-1.columns
@@ -25,6 +23,8 @@
 							= f.text_field :nickname
 							.small-6.small-centered.columns.end
 								= submit_tag "ADD CAR", class: "button success expand"
+
+
 %nav.top-bar{"data-topbar" => ""}
 	%ul.title-area
 		%li.name
