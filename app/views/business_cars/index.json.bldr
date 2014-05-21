@@ -1,0 +1,2 @@
+collection @cars do |c|
+	attributes :make, :model, :mileage, :nickname

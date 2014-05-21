@@ -1,0 +1,5 @@
+collection :business_cars = cars do |car|
+	attribute(:driver) {car.driver.name}
+	attributes :make, :model, :mileage, :nickname, 
+	end
+end
