@@ -54,12 +54,8 @@ $( function () {
 			type: "POST",
 			
 			success: function(data){
-
-
 				console.log('before if statement');
-
 				if(data === "0") {
-					
 					console.log(data);
 					modal.hide('slow');
 				}
@@ -69,12 +65,8 @@ $( function () {
 					$("#itemlist").append(insert_car(data.id, data.make, data.model, data.mileage, data.nickname));
 					// $('ul').append(data);
 					modal.fadeOut();
-
-				
-					
 				}
 			}
-		
 		});	
 event.preventDefault();
 		// return false;

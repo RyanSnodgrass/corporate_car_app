@@ -16,6 +16,7 @@ $ ->
 
 	$('.close-reveal-modal').on 'click', ->
 		add_modal.fadeOut 'slow'
+		update_modal.fadeOut 'slow'
 
 	$(document).on 'click', '.delete', ->
 		box = $(this).parents '.car-div'
