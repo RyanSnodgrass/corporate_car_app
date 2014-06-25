@@ -9,8 +9,8 @@ $ ->
 	$('.add').on 'click', ->
 		add_modal.fadeIn 'fast'
 
-	$('.add').on 'click', ->
-		add_modal.fadeIn 'fast'	
+	# $('.add').on 'click', ->
+	# 	add_modal.fadeIn 'fast'	
 
 
 
