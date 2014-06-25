@@ -1,5 +1,6 @@
 class BusinessCarsController < ApplicationController
 	# respond_to :json
+	
 
 	def index
 		@cars = BusinessCar.all
@@ -13,6 +14,13 @@ class BusinessCarsController < ApplicationController
 			respond_to do |format|
 				format.js { render plain: "0"}
 			end
+
+	def update
+		@car = BusinessCar.find(params[:id])
+		if @car.update_attributes(car_params)
+			render json: @car
+		else
+			render plain: "0"
 		end
 	end
 

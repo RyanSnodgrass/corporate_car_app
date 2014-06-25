@@ -1,4 +1,5 @@
 $( function () {
+
 	
 	function insert_car(id, make, model, mileage, nickname) {
 		return '<div class="small-6 columns"><div class="car-box"><div class="small-6 columns"><h2>' + nickname + '</h2></div><div class="small-6 columns"><button class="button expand">Update</button></div><div class="small-6 columns"><h5>Make</h5><h4>' + make + '</h4></div><div class="small-6 columns"><h5>Model</h5><h4>' + model + '</h4></div><div class="small-6 columns"><h5>Mileage</h5><h4>' + mileage + '</h4></div><div class="small-6 columns"><button class="button alert expand delete" data-businesscar-id="' + id + '">Delete</button></div></div></div>'
@@ -16,7 +17,7 @@ $( function () {
 		modal.fadeOut('slow');
 	});
 
-	$('.delete').on('click', function() {
+	$(document).on('click', '.delete', function() {
 		var box = $(this).parents('.car-div');
 		var car_id = $(this).attr('data-businesscar-id');
 		console.log(car_id);
