@@ -14,6 +14,8 @@ class BusinessCarsController < ApplicationController
 			respond_to do |format|
 				format.js { render plain: "0"}
 			end
+		end
+	end
 
 	def update
 		@car = BusinessCar.find(params[:id])
