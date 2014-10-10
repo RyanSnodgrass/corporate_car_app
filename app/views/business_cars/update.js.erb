@@ -1,0 +1,3 @@
+$('.update_overlay').hide();
+$("#car_<%= @car.id %>").replaceWith("<%= j render 'business_car', c: @car %>");
+// console.log("#car_<%= @car.id %>")

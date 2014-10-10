@@ -1,0 +1,4 @@
+object @new_car do |car|
+  attribute(:driver) {car.driver.name}
+  attributes :make, :model, :mileage, :nickname
+end

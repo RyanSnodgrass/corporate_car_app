@@ -3,13 +3,14 @@ class BusinessCarsController < ApplicationController
 	
 
 	def index
+		# @car = BusinessCar.build
 		@cars = BusinessCar.all
 	end
 	
 	def create
 		 @new_car = BusinessCar.new(car_params)
 		if @new_car.save
-			render json: @new_car
+			render :create
 		else
 			respond_to do |format|
 				format.js { render plain: "0"}
@@ -20,7 +21,10 @@ class BusinessCarsController < ApplicationController
 	def update
 		@car = BusinessCar.find(params[:id])
 		if @car.update_attributes(car_params)
-			render json: @car
+			respond_to do |format|
+				format.html { redirect_to business_cars_path}
+				format.js
+			end
 		else
 			render plain: "0"
 		end
