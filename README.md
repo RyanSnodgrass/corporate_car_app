@@ -32,6 +32,25 @@ Then your routes
   root 'business_cars#index'
 ```
 
+Then the model
+```ruby
+class BusinessCar < ActiveRecord::Base
+	validates :mileage, numericality: true
+	belongs_to :driver
+end
+
+class Driver < ActiveRecord::Base
+	has_many :business_cars
+end
+```
+
+I created a seed file to have only one driver
+```ruby
+# db/seeds.rb
+Driver.delete_all
+Driver.create(name: "Bruce Mclaren")
+```
+
 Then your view
 
 ```haml
@@ -89,6 +108,64 @@ Then your view
 				%button.button.expand.success.add
 					Add a Car
 ```
+
+Next we need a partial for the car thumbnail
+```haml
+%li{id: "car_#{c.id}"}
+  .car-div
+    .small-6.columns
+      .car-box
+        .small-6.columns
+          %h2= c.nickname
+          %h5 Driver
+          %h4= c.driver.name
+          
+        .small-6.columns
+          %button.button.expand.bupdate{ data: { "businesscar-id" => c.id}}
+            Update
+        .small-6.columns
+          %h5 Make
+          %h4= c.make
+        .small-6.columns
+          %h5 Model
+          %h4= c.model
+        .small-6.columns  
+          %h5 Mileage
+          %h4= c.mileage
+        .small-6.columns  
+          %button.button.alert.expand.delete{ data: { "businesscar-id" => c.id}}
+            Delete
+.update_overlay{id: "update_car_#{c.id}"}
+  .row
+    .small-11.medium-9.large-6.small-centered.columns
+      .modal
+      
+        = form_for c, remote: true do |f|
+
+          .row
+            .small-11.columns
+            .small-1.columns
+              %a.close-reveal-modal ×
+          .row
+            .small-9.small-centered.columns
+              = label_tag :make, nil
+              = f.text_field :make
+              %br
+
+              = label_tag :model, nil
+              = f.text_field :model
+              %br
+              = label_tag :mileage, nil
+              = f.text_field :mileage
+              %br
+              = label_tag :nickname, nil
+              = f.text_field :nickname
+              .small-6.small-centered.columns.end
+                = submit_tag "UPDATE CAR", class: "button success expand"
+```
+
+
+
 Creation
 ---
 
