@@ -202,11 +202,19 @@ object @new_car do |car|
   attributes :make, :model, :mileage, :nickname
 end
 ```
-Then we need to create a modal.js.coffee file to handle the incoming request to the view.  The `insert_car` variable is one way of inserting a new thumbnail into the view. If I wanted to do a partial, I'd have to instead do a `create.js.erb` file
+Then we need to create a modal.js.coffee file to handle the incoming request to the view.  The `insert_car` variable is one way of inserting a new thumbnail into the view. If I wanted to do a partial, I'd have to instead do a `create.js.erb` file. Make sure to put it in your assets folder.
 ```coffee
+# app/assets/javascripts/modal.js.coffee
 $ ->
   insert_car = (id, make, model, mileage, nickname, driver_id) ->
     '<div class="small-6 columns"><div class="car-box"><div class="small-6 columns"><h2>' + nickname + '</h2><h5>Driver</h5><h4>' + driver_id + '</h4></div><div class="small-6 columns"><button class="button expand">Update</button></div><div class="small-6 columns"><h5>Make</h5><h4>' + make + '</h4></div><div class="small-6 columns"><h5>Model</h5><h4>' + model + '</h4></div><div class="small-6 columns"><h5>Mileage</h5><h4>' + mileage + '</h4></div><div class="small-6 columns"><button class="button alert expand delete" data-businesscar-id="' + id + '">Delete</button></div></div></div>'
+
+  $add_modal = $('.add_overlay')
+  
+  $('.add').on 'click', ->
+		$add_modal.fadeIn 'fast'
+		
+	
   
   # This is what hapens after remote: true.
   $('form#new_business_car').on 'ajax:complete', (event, data, status, xhr) ->
