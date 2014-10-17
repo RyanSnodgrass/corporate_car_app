@@ -111,6 +111,7 @@ Then your view
 
 Next we need a partial for the car thumbnail
 ```haml
+/ app/views/business_cars/_business_car.html.haml
 %li{id: "car_#{c.id}"}
   .car-div
     .small-6.columns
